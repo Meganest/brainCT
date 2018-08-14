@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<!-- saved from url=(0059)http://techslides.com/demos/image-browser/photo-viewer.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<title>Ground Truth System</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./Photo Viewer for Local Files and Directories_files/style.min.css">
+	<link rel="stylesheet" href="./bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+	<script src="angular.min.js"></script>
+	<script src="./jquery-3.1.1.min.js"></script>
+    <link rel="stylesheet" href="custom.css">
+	<script type="text/javascript" async="" src="./Photo Viewer for Local Files and Directories_files/ga.js.download"></script>   
+	<link rel="stylesheet" href="./bootstrap/css/font-awesome.min.css"> 
+	<link rel="stylesheet" href="./bootstrap/css/font-awesome.css"> 
+
+<!--         <script>
+        //analytics tag
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-941940-28']);
+          _gaq.push(['_trackPageview']);
+
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+        </script>
+ -->
+
+</head>
+<body ng-app="" style="background-image: url('02.jpg')">
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="#" style="font-weight: bold;">Ground Truth System</a>
+	    </div>
+	    <ul class="nav navbar-nav">
+	      <li class="active"><a href="Photo Viewer for Local Files and Directories.html">Home</a></li>
+	      <li><a id="docname" href="#">{{docname}}</a></li>
+	    </ul>
+	    <ul class="nav navbar-nav" style="float: right; margin-right: 50px;">
+	      <li><a id="help" href="#" class="navbar-nav pull-right">Helps</a></li>
+	    </ul>
+	  </div>
+	</nav>
+	<div id="info">
+	    <h1 class="text-center" style="font-size: 70px;color:white">Ground Truth System</h1>
+	    <form id="loginForm" method="post" class="form-horizontal" style="margin: 60px 60px 30px 150px">
+		    <div class="form-group">
+		        <label class="col-xs-3 control-label">Username</label>
+		        <div class="col-xs-5">
+		            <input type="text" class="form-control" ng-model="docname" name="username" />
+		        </div>
+		    </div>
+		    <div class="form-group">
+		    	<p class="col-xs-9 col-xs-offset-3" id="error" style="color: red"></p>
+		    </div>
+		    <div class="form-group">
+		        <div class="col-xs-9 col-xs-offset-3">
+		            <button type="submit" id="login" class="btn btn-primary">Sign in</button>
+		        </div>
+		    </div>
+		</form>
+	</div>
+	<!-- The Modal -->
+	<div id="modal" ng-app="" class="row">
+		<div id="modalimg" style="margin:120px 0px 0px 800px;"  ></div>
+		<div style="margin: -517px 0px 0px 125px;" >
+			<canvas id="comparediv" width="512px" height="512px"></canvas>
+		</div>
+		<input type="file" id="fileinput" webkitdirectory="" directory="" style="margin: 20px 0px 0px 125px;display: none">
+		<div id="modalbuttons" style="margin-top: 70px;">
+			<!-- <div id="modalzoom">Zoom</div> -->
+			<div class="tools">
+			  <button class="btn btn-default" style="float: right;margin-left:10px; margin-right: 10px">
+			  	<a id="download">
+  					<i class="fa fa-floppy-o fa-1x" aria-hidden="true"></i>
+			  	<a>
+			  </button>
+			  <a class="btn btn-default" href="#tools_sketch" data-tool="marker" style="margin-right: 5px; text-decoration: none;"; margin-left: 5px;">
+			  	<i class="fa fa-pencil fa-1x" aria-hidden="true"></i>
+			  </a>
+			  <a class="btn btn-default" href="#tools_sketch" data-tool="eraser" style="margin-right: 5px; text-decoration: none;">
+			  	<i class="fa fa-eraser fa-1x" aria-hidden="true"></i>
+			  </a>
+			</div>
+			<div>
+			  <a id="compare" style='font-size: 20px; text-decoration: none;'>Compare The Results</a>
+			  <p id="feedback" style='float: right;color: orange'></p>
+			</div>
+		</div>
+		<div id="modalbuttons">
+			<div id="modalclose" style="margin-top: 5px;">Close</div>
+		</div>
+	</div>
+
+	<div id="container">
+	  <div id="side" style="height: 750px;">
+	    <button id="loadAll">Load All</button>
+	    <button id="play">Play</button>
+	    <input type="file" id="file_input" webkitdirectory="" directory="" style="display: none">
+	    <ul id="dir-tree"></ul>
+	  </div>
+	  <div id="sidebar"></div>
+	  <div id="results">
+	  	<div id="single"></div>
+	  	<div id="infinity"><div style="margin: 0px; padding: 0px; border: none;"><div style="margin: 0px; padding: 0px; border: none;"></div><div data-infinity-pageid="1" style="margin: 0px; padding: 0px; border: none;"></div></div></div>
+	  </div>
+	</div>
+
+<!-- <script type="text/javascript" src="./Photo Viewer for Local Files and Directories_files/jquery-2.1.1.min.js.download"></script> -->
+<script type="text/javascript" src="./Photo Viewer for Local Files and Directories_files/jquery.wheelzoom.js.download"></script>
+<script type="text/javascript" src="./Photo Viewer for Local Files and Directories_files/jquery.tree.js.download"></script>
+<script type="text/javascript" src="./Photo Viewer for Local Files and Directories_files/infinity.js.download"></script>
+<script type="text/javascript" src="sketch.js"></script>
+<script type="text/javascript" src="custom.js"></script>
+<script type="text/javascript" src="Malone.js"></script>
+
+<div id="myModal" class="modal">
+	  <!-- Modal content -->
+	  <div class="modal-content" style="height: 80%;">
+	    <div class="modal-header">
+	      <span class="close">&times;</span>
+	      <h2>Helps</h2>
+	    </div>
+	    <div class="modal-body">
+	      <p></p>
+	      <p>Setting location of auto-save folder in Google Chrome.</p>
+	      <p>Go to Settings > Show advanced settings.. > Downloads > Select the location. </p>
+	    </div>
+<!-- 	    <div class="modal-footer">
+	      <h3>Modal Footer</h3>
+	    </div> -->
+	  </div>
+	</div>
+<script>
+//  the Help modal
+var modal = document.getElementById('myModal');
+var btn = document.getElementById("help");
+var span = document.getElementsByClassName("close")[0];
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+span.onclick = function() {
+    modal.style.display = "none";
+}
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+</body></html>

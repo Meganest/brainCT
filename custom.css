@@ -1,0 +1,158 @@
+
+html, body {
+  padding: 0;
+  margin: 0;
+  }
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header {
+    padding: 2px 16px;
+    background-color: #78bcff;
+    color: white;
+}
+
+.modal-body {padding: 2px 16px;}
+
+.modal-footer {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+}
+
+#container {
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  height: 100%;
+}
+
+#container > div {
+  padding: 10px;
+}
+
+#sidebar {
+  background:#ddd;
+  display:none;
+}
+#sidebar:hover {
+  background:#ccc;
+}
+#loadAll, #play {
+  display:none;
+}
+
+#side {
+	width: 20%;
+	overflow: auto;
+}
+#results {
+	background: #eee;
+	/*width: 72%;*/
+	display:none;
+}
+#infinity {
+	clear:both;
+}
+.all {
+	width:95%;
+}
+.all img{
+	width:100%;
+	height:100%;
+}
+#modal {
+	width:100%;
+	height:100%;
+	display:none;
+}
+#modalbuttons {
+	/*background: #ccc;*/
+	font-weight: bold;
+	padding: 5px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	font-size: 20px;
+	opacity: 1;
+}
+#modalbuttons div {
+	cursor:pointer;
+}
+#modalzoom {
+	margin-right:20px;
+}
+.all {
+	width:100%;
+}
+#info {
+	margin-top:150px;
+}
+
+#comparediv{ 
+	position: relative;
+	width:512px; height:512px; 
+	
+}
+
+.tree,.tree ul,.tree li { list-style:none; margin:0; padding:0; zoom: 1; }
+.tree ul { margin-left:8px; }
+.tree li a { color:#222222; padding:.1em 7px .1em 27px; display:block; text-decoration:none; border:1px dashed #fff; background-color: #eaf2f8; }
+.tree li a.tree-parent { background-color: #c0daec; }
+.tree li a.tree-parent-collapsed { background-color: #eaf2f8; }
+.tree li a:hover,.tree li a.tree-parent:hover,.tree li a:focus,.tree li a.tree-parent:focus,.tree li a.tree-item-active { color:#000; border:1px solid#eee; background-color:#fafafa; -moz-border-radius:4px; -webkit-border-radius:4px; border-radius:4px; }
+.tree li a:focus,.tree li a.tree-parent:focus,.tree li a.tree-item-active { border:1px solid #e2f3fb; background-color:#f2fafd; }
+.tree ul.tree-group-collapsed { display:none; }
